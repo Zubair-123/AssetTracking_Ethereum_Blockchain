@@ -5,7 +5,7 @@ const fs = require('fs');
 
 const solc = require('solc')
  //put the directory name and give the file name
-const inboxPath = path.resolve(__dirname, 'contracts','Auto_Sale.sol');
+const inboxPath = path.resolve(__dirname, 'contract','Auto_Sale.sol');
 
 const source = fs.readFileSync(inboxPath, 'utf8'); // read solidity as UTF-8
 
