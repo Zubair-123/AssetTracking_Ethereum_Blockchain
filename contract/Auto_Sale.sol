@@ -70,7 +70,7 @@ contract Automobile_Sale{
     event AssetDoesNotExist(string message);
     // gets specific VIN numbered car
     function getSpecificCar(uint _vinNumber) public view returns (uint, string, string, string,string) {
-        if(!Car[_vinNumber].initialized){
+        if(Car[_vinNumber].initialized){
             return  (Car[_vinNumber].lot_Number, Car[_vinNumber].color, Car[_vinNumber].EngineType, Car[_vinNumber].date_of_manufacturing, Car[_vinNumber].geolocation);
         } else{
             emit AssetDoesNotExist("Asset deos not exist ");
