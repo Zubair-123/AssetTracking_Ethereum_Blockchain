@@ -35,10 +35,10 @@ contract Automobile_Sale{
     ////////////////////////////////////////////////////////////////////////////
 
     // functions     
-    function Automobile_Sale() public payable{
-        mName = "Toyota Japan";
+    function Automobile_Sale(string _mName, string _origin) public payable{
+        mName = _mName;
         mAddress = msg.sender;
-        manufacturing_origin = "Japan";
+        manufacturing_origin = _origin;
     }
     
     ////////////////////////////////////////////////////////////////////////////    
@@ -71,7 +71,7 @@ contract Automobile_Sale{
     // gets specific VIN numbered car
     function getSpecificCar(uint _vinNumber) public view returns (uint, string, string, string,string) {
         if(!Car[_vinNumber].initialized){
-            return  (Car[_vinNumber].lot_Number,Car[_vinNumber].color,Car[_vinNumber].EngineType,Car[_vinNumber].date_of_manufacturing,Car[_vinNumber].geolocation);
+            return  (Car[_vinNumber].lot_Number, Car[_vinNumber].color, Car[_vinNumber].EngineType, Car[_vinNumber].date_of_manufacturing, Car[_vinNumber].geolocation);
         } else{
             emit AssetDoesNotExist("Asset deos not exist ");
             
@@ -91,7 +91,7 @@ contract Automobile_Sale{
 
     // gets the two previous owners and their location
     function getPreviousOwnerOfAsset(uint _VIN) public view returns (string, string, string,  string) {
-        return (Car[_VIN].previousOwners[Car[_VIN].previousOwners.length - 1], Car[_VIN].previousOwnersLocation[Car[_VIN].previousOwnersLocation.length - 1], Car[_VIN].previousOwners[Car[_VIN].previousOwners.length - 2], Car[_VIN].previousOwnersLocation[Car[_VIN].previousOwnersLocation.length - 2]);
+        return (Car[_VIN].previousOwners[Car[_VIN].previousOwners.length - 1], Car[_VIN].previousOwnersLocation[Car[_VIN].previousOwnersLocation.length - 1],Car[_VIN].previousOwners[Car[_VIN].previousOwners.length - 2],Car[_VIN].previousOwnersLocation[Car[_VIN].previousOwnersLocation.length - 2]);
     }
 
 
@@ -136,4 +136,5 @@ contract Automobile_Sale{
         require(msg.sender == mAddress);
         _;
     }
+ 
 }
