@@ -9,4 +9,4 @@ const inboxPath = path.resolve(__dirname, 'contracts','Auto_Sale.sol');
 
 const source = fs.readFileSync(inboxPath, 'utf8'); // read solidity as UTF-8
 
-module.exports = solc.compile(source, 1).contracts[':Inbox'];
+module.exports = solc.compile(source, 1).contracts[':Automobile_Sale'];
