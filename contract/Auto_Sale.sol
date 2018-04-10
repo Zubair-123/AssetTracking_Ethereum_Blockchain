@@ -3,10 +3,10 @@ pragma solidity ^0.4.21;
 contract Automobile_Sale{
 
     // attributes of toyota japan
-    string  private mName;
-    address private mAddress;
-    uint[]  private assetOwnedByManufacture;
-    string  private manufacturing_origin;
+    string   mName;
+    address  mAddress;
+    uint[]   assetOwnedByManufacture;
+    string   manufacturing_origin;
     
     // attributes of Car
     struct Cars{
@@ -40,7 +40,9 @@ contract Automobile_Sale{
         mAddress = msg.sender;
         manufacturing_origin = _origin;
     }
-    
+    function getManufacturerName() public view returns(string, string){
+        return (mName, manufacturing_origin);
+    }
     ////////////////////////////////////////////////////////////////////////////    
     // events for asset creation or deletion
     event AssetCreate(address account, uint VIN, string message);
