@@ -54,7 +54,7 @@ contract Automobile_Sale{
     event AssetCreate(address account, uint VIN, string message);
     event RejectCreate(address account, uint VIN, string message);    
 
-    function createAsset (uint _VIN,string _color, string _EngineType, string _geolocation, string _date) onlyCanBeCalledByManufacturer public payable {
+    function createAsset (uint _VIN,string _color, string _EngineType, string _geolocation, string _date) public payable {
         // Here 10 cars will be created by
         // Toyota japan as an asset
         getSpecificCar(_VIN);
@@ -130,15 +130,15 @@ contract Automobile_Sale{
     event RejectOwnership(address ownerAdd, string message);
 
     // // it transfers the ownership of the asset in exchange of money    
-    function transferToOwner(address _AssetSender,address _AssetReciever, string _NewOwnerName, uint _VIN, string _geolocation) requiredAmount public payable{
+    function transferToOwner(address _AssetSender,address _AssetReciever, string _NewOwnerName, uint _VIN, string _geolocation)  public payable{
         if(owner[_AssetSender].Car[_VIN].initialized){
             owner[_AssetReciever].name           = _NewOwnerName;
             owner[_AssetReciever].geolocation    = _geolocation;
 
-            details[_VIN].previousOwner.push(details[_VIN].currentOwner);
-            details[_VIN].previousOwnersLocation.push(details[_VIN].currentLocation); 
             details[_VIN].currentOwner   = _NewOwnerName;
             details[_VIN].currentLocation    = _geolocation;
+            details[_VIN].previousOwner.push(details[_VIN].currentOwner);
+            details[_VIN].previousOwnersLocation.push(details[_VIN].currentLocation); 
             
             //transfers ether for Asset Exchange
             transferEther(msg.sender, _AssetReciever);
@@ -152,13 +152,13 @@ contract Automobile_Sale{
     
 
     
-    modifier requiredAmount{
-        require(msg.value == 1 ether);
-        _;
-    }
-    modifier onlyCanBeCalledByManufacturer {
-        require(msg.sender == mAddress);
-        _;
-    }
+    // modifier requiredAmount{
+    //     require(msg.value == 1 ether);
+    //     _;
+    // }
+    // modifier onlyCanBeCalledByManufacturer {
+    //     require(msg.sender == mAddress);
+    //     _;
+    // }
  
 }
