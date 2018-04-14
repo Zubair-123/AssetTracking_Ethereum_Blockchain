@@ -9,7 +9,7 @@ const {interface, bytecode} = require('./compile');
 
 // work with the API by Infura to Rinkeby network, and the Mnemonic
 const provider = new HDWalletProvider(
-    "answer jelly release mask glance horn emotion ticket pride page build cruel",
+    "senior oven seek shop solve worth general fiscal wave meat demise kiwi",
     'https://rinkeby.infura.io/jHZbiuFORTISdLGOrQhk'
 );
 
