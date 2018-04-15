@@ -131,7 +131,7 @@ contract Automobile_Sale{
 
     // // it transfers the ownership of the asset in exchange of money    
     function transferToOwner(address _AssetSender,address _AssetReciever, string _NewOwnerName, uint _VIN, string _geolocation)  public payable{
-        if(!owner[_AssetSender].Car[_VIN].initialized){
+        if(owner[_AssetSender].Car[_VIN].initialized){
             owner[_AssetReciever].name           = _NewOwnerName;
             owner[_AssetReciever].geolocation    = _geolocation;
 
