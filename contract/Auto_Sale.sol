@@ -45,6 +45,7 @@ contract Automobile_Sale{
         mName = _mName;
         mAddress = msg.sender;
         manufacturing_origin = _origin;
+        
     }
     function getManufacturerName() public view returns(string, string){
         return (mName, manufacturing_origin);
@@ -135,10 +136,10 @@ contract Automobile_Sale{
             owner[_AssetReciever].name           = _NewOwnerName;
             owner[_AssetReciever].geolocation    = _geolocation;
 
-            details[_VIN].currentOwner   = _NewOwnerName;
-            details[_VIN].currentLocation    = _geolocation;
             details[_VIN].previousOwner.push(details[_VIN].currentOwner);
             details[_VIN].previousOwnersLocation.push(details[_VIN].currentLocation); 
+            details[_VIN].currentOwner   = _NewOwnerName;
+            details[_VIN].currentLocation    = _geolocation;
             
             //transfers ether for Asset Exchange
             transferEther(msg.sender, _AssetReciever);
